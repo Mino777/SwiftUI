@@ -21,10 +21,10 @@
 //  THE SOFTWARE.
 //
 
-import SwiftUI
-
-extension MemberEntity: Identifiable {
-   public var id: String {
-      return name ?? ""
-   }
-}
+//import SwiftUI
+//
+//extension MemberEntity: Identifiable {
+//   public var id: String {
+//      return name ?? ""
+//   }
+//}
