@@ -53,6 +53,11 @@ struct View_DatePicker: View {
          Spacer()
          
          // #1
+        DatePicker(selection: $selectedDate, in: ...Date(), displayedComponents: [.date]) {
+            EmptyView()
+        }
+        .labelsHidden()
+        Spacer()
       }
    }
 }

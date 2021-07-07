@@ -32,6 +32,16 @@ struct View_Stepper: View {
             .font(.system(size: 150))
          
          // #1
+        Stepper("QTY", value: $quantity)
+            .padding()
+        
+        Stepper("QTY") {
+            self.quantity += 1
+        } onDecrement: {
+            self.quantity -= 1
+        }
+        .padding()
+        .labelsHidden()
       }
    }
 }

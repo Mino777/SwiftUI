@@ -38,7 +38,10 @@ struct View_DatePickerStyle: View {
             .font(.title)
          
          // #1
-         
+        DatePicker(selection: $selectedDate, displayedComponents: [.date, .hourAndMinute]) {
+            Text("Select Date")
+        }
+        .labelsHidden()
          
          
          Spacer()
@@ -47,7 +50,10 @@ struct View_DatePickerStyle: View {
             .font(.title)
          
          // #2
-         
+        DatePicker(selection: $selectedDate, displayedComponents: [.date]) {
+            Text("Select Date")
+        }
+        .labelsHidden()
          
          Spacer()
          
@@ -55,7 +61,10 @@ struct View_DatePickerStyle: View {
             .font(.title)
          
          // #3
-         
+        DatePicker(selection: $selectedDate, displayedComponents: [.hourAndMinute]) {
+            Text("Select Date")
+        }
+        .labelsHidden()
          
          
          
