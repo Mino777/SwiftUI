@@ -24,24 +24,65 @@
 import SwiftUI
 
 struct Nav_NavigationView: View {
-   @State private var barHidden = false
-   
-   
-   var body: some View {
-      VStack {
-         Button(action: {
-            self.barHidden.toggle()
-         }, label: {
-            Text("Toggle Navigation Bar")
-         })
-         .padding()
-      }
-      
-   }
+    @State private var barHidden = false
+    
+    @State private var push = false
+    
+    var body: some View {
+        NavigationView  {
+            VStack {
+                Button(action: {
+                    //self.barHidden.toggle()
+                    self.push = true
+                }, label: {
+                    Text("Toggle Navigation Bar")
+                })
+                .padding()
+                
+                NavigationLink(
+                    destination: NumberScene(number: 1, color: .blue),
+                    label: {
+                        Text("Push")
+                    })
+                    .padding()
+                
+                NavigationLink(
+                    destination: ColorScene(showSheet: $push),
+                    isActive: $push,
+                    label: {
+                        Text("Push")
+                    })
+            }
+            .navigationBarTitle("Navigation View")
+            .navigationBarHidden(barHidden)
+            .navigationBarItems(leading: Button(action: {
+                
+            }, label: {
+                Text("Close")
+            }), trailing: TrailingButtonView()) // subview
+        }
+    }
 }
 
 struct Nav_NavigationView_Previews: PreviewProvider {
-   static var previews: some View {
-      Nav_NavigationView()
-   }
+    static var previews: some View {
+        Nav_NavigationView()
+    }
+}
+
+struct TrailingButtonView: View {
+    var body: some View {
+        HStack {
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "square.and.arrow.up")
+            })
+            
+            Toggle(isOn: .constant(true), label: {
+                Text("Toggle")
+            })
+            .labelsHidden()
+        }
+    }
 }

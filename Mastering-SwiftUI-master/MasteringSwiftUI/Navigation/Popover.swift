@@ -25,15 +25,20 @@ import SwiftUI
 
 struct Nav_Popover: View {
    
+    @State private var showPopover = false
    
    var body: some View {
       VStack {
          Button(action: {
-            
+            self.showPopover.toggle()
          }, label: {
             Text("Show Popover")
          })
          .padding()
+         .popover(isPresented: $showPopover, attachmentAnchor: .rect(Anchor<CGRect>.Source.bounds), arrowEdge: .top, content: {
+            NumberScene(number: 1, color: .blue)
+                .frame(minWidth: 200, minHeight: 200)
+         })
           
       }
       .navigationBarTitle("Popover")
@@ -42,8 +47,8 @@ struct Nav_Popover: View {
 
 struct Nav_Popover_Previews: PreviewProvider {
    static var previews: some View {
-      NavigationView {
+//      NavigationView {
          Nav_Popover()
-      }
+//      }
    }
 }

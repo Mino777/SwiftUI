@@ -27,10 +27,25 @@ struct Nav_TabView: View {
    @State private var selectedIndex = 0
    
    var body: some View {
-      VStack {
-         ImageScene(imageName: "star", color: Color.red)
-         ImageScene(imageName: "heart", color: Color.green)
-         ImageScene(imageName: "play", color: Color.blue)
+    TabView(selection: $selectedIndex) {
+         ImageScene(imageName: "star", color: Color.red, selectedIndex: $selectedIndex)
+            .tabItem {
+                Image(systemName: "star")
+                Text("Star \(selectedIndex)")
+            }
+            .tag(0)
+         ImageScene(imageName: "heart", color: Color.green, selectedIndex: $selectedIndex)
+            .tabItem {
+                Image(systemName: "heart")
+                Text("heart")
+            }
+            .tag(1)
+         ImageScene(imageName: "play", color: Color.blue, selectedIndex: $selectedIndex)
+            .tabItem {
+                Image(systemName: "play")
+                Text("play")
+            }
+            .tag(2)
       }
    }
 }

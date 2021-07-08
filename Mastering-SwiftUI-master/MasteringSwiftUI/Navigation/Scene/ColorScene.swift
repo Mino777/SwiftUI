@@ -40,7 +40,7 @@ struct ColorScene: View {
          Spacer()
          
          Button(action: {
-            
+            self.showSheet = false
          }, label: {
             Text("Close")
                .font(.title)
