@@ -32,8 +32,9 @@ struct View_ForEach: View {
          Text("ForEach")
             .font(.largeTitle)
          
-         //
-         
+        ForEach(items) { (item) in
+            Text(item.name)
+        }
       }
    }
 }

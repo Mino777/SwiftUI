@@ -31,7 +31,6 @@ struct Grid: View {
          Text("Grid")
             .font(.largeTitle)
          
-         //
          VStack(spacing: 30) {
             ForEach(0..<3) { row in
                HStack(spacing: 30) {
@@ -42,7 +41,6 @@ struct Grid: View {
                }
             }
          }
-         //
       }
    }
 }

@@ -42,7 +42,10 @@ struct ExplicitAnimation: View {
          
          HStack {
             Button(action: {
-               self.position = self.position == .zero ? CGPoint(x: 300, y: 500) : .zero
+                withAnimation(.linear) {
+                    self.position = self.position == .zero ? CGPoint(x: 300, y: 500) : .zero
+                }
+               
             }, label: {
                Text("Animate")
             })
