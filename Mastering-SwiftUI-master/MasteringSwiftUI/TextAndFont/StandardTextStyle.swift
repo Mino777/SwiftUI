@@ -27,20 +27,28 @@ struct StandardTextStyle: View {
    var body: some View {
       VStack(spacing: 20) {
          Text("Large Title")
+            .font(.largeTitle)
          
          Text("Title")
+            .font(.title)
          
          Text("Headline")
+            .font(.headline)
          
          Text("Subheadline")
+            .font(.subheadline)
          
          Text("body")
+            .font(.body)
          
          Text("callout")
+            .font(.callout)
          
          Text("caption")
+            .font(.caption)
          
          Text("footnote")
+            .font(.footnote)
       }
    }
 }

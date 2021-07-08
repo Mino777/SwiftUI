@@ -38,7 +38,25 @@ struct View_TextField: View {
             .foregroundColor(.secondary)
          
          //
-         
+        TextField("Input Something", text: $name, onEditingChanged: { changed in
+            print(changed)
+        }, onCommit: {
+            print("commit")
+        })
+        .padding()
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+        .font(.title)
+        .keyboardType(.numberPad)
+        .textContentType(.username)
+        .autocapitalization(.none)
+        .disableAutocorrection(true)
+        
+        SecureField("Input Password", text: $password)
+            .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .font(.title)
+            .keyboardType(.numberPad)
+            .textContentType(.password)
          
          
          Spacer()
