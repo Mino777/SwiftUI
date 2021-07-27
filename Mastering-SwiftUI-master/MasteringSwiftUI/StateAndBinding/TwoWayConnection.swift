@@ -24,25 +24,39 @@
 import SwiftUI
 
 struct TwoWayConnection: View {
-   var value: String = "Hello"
-   
-   var body: some View {
-      VStack(spacing: 70) {
-         Text(value)
-            .font(.largeTitle)
-                  
-         Button(action: {
+    @State private var value: String = "Hello"
+    
+    var body: some View {
+        VStack(spacing: 70) {
+            Text(value)
+                .font(.largeTitle)
             
-         }, label: {
-            Text("Update")
-         })
-         .padding()
-      }
-   }
+            TextField("Input", text: $value)
+                .padding()
+            
+            BindingButton(value: $value)
+        }
+    }
 }
 
 struct TwoWayConnection_Previews: PreviewProvider {
-   static var previews: some View {
-      TwoWayConnection()
-   }
+    static var previews: some View {
+        Group {
+            TwoWayConnection()
+            BindingButton(value: .constant("Hello"))
+        }
+    }
+}
+
+struct BindingButton: View {
+    @Binding var value: String
+    
+    var body: some View {
+        Button(action: {
+            self.value = "Hi~~"
+        }, label: {
+            Text(value)
+        })
+        .padding()
+    }
 }

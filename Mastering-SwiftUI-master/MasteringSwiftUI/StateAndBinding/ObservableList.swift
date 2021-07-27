@@ -23,37 +23,51 @@
 
 import SwiftUI
 
+class SharedList: ObservableObject {
+    var title = ""
+    @Published var list = [String]()
+    
+}
+
 
 struct ObservableList: View {
-   @State private var value: String = ""
-   
-   
-   var body: some View {
-      VStack {
-         
-         HStack {
-            TextField("Input", text: $value)
-               .textFieldStyle(RoundedBorderTextFieldStyle())
-               .padding()
+    @State private var value: String = ""
+    
+    @ObservedObject var sharedList = SharedList()
+    
+    var body: some View {
+        VStack {
+            Text(sharedList.title)
+                .font(.largeTitle)
             
-            Button(action: {
-               
-            }, label: {
-               Text("Add To List")
-            })
-               .padding()
-         }
-        
-         
-         
-         Spacer()
-      }
-      .padding()
-   }
+            HStack {
+                TextField("Input", text: $value)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Button(action: {
+                    self.sharedList.title = "Observable List"
+                    self.sharedList.list.insert(self.value, at: 0)
+                    self.value = ""
+                }, label: {
+                    Text("Add To List")
+                })
+                .padding()
+                
+            }
+            
+            List(sharedList.list, id: \.self) { item in
+                Text(item)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
 }
 
 struct ObservableList_Previews: PreviewProvider {
-   static var previews: some View {
-      ObservableList()
-   }
+    static var previews: some View {
+        ObservableList()
+    }
 }

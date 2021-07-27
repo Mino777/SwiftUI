@@ -24,32 +24,35 @@
 import SwiftUI
 
 struct View_Environment: View {
-   
-   var body: some View {
-      List {
-         HStack {
-            Text("Color Scheme")
+    
+    @Environment(\.colorScheme) var currentColorScheme
+    
+    var body: some View {
+        List {
+            HStack {
+                Text("Color Scheme")
+                
+                Spacer()
+                
+                Text(currentColorScheme == .dark ? "Dark Mode" : "Light Mode")
+            }
+            .padding()
             
-            Spacer()
-            
-            
-         }
-         .padding()
-         
-         HStack {
-            Text("Horizontal Size Class")
-            
-            Spacer()
-            
-            
-         }
-         .padding()
-      }
-   }
+            HStack {
+                Text("Horizontal Size Class")
+                
+                Spacer()
+                
+                
+            }
+            .padding()
+        }
+    }
 }
 
 struct View_Environment_Previews: PreviewProvider {
-   static var previews: some View {
-      View_Environment()
-   }
+    static var previews: some View {
+        View_Environment()
+            .environment(\.colorScheme, .light)
+    }
 }
